@@ -1,0 +1,19 @@
+{
+  "name": "MIRA Mind — نفهم مشاعرهم.. لنبني عالمهم",
+  "short_name": "MIRA Mind",
+  "description": "يوميّة نمو تأملية للأهالي: تسجيل يومي + قياسات رسم موضوعية + تقرير أسبوعي ونصائح تربوية إيجابية. البيانات تبقى محلية.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f8f5",
+  "theme_color": "#58C07A",
+  "categories": ["education", "lifestyle", "health"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

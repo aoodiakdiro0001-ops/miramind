@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MIRA Mind — نفهم مشاعرهم.. لنبني عالمهم</title>
+  <meta name="description" content="يوميّة نمو تأملية للأهالي: تسجيل يومي + قياسات رسم موضوعية + تقرير أسبوعي ونصائح تربوية إيجابية. بيانات الطفل تبقى محلية.">
+  <meta name="theme-color" content="#58C07A">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="MIRA Mind">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="appbar">
+    <div class="brand"><span class="logo">🌱</span> <b>MIRA Mind</b></div>
+    <div class="sub">نفهم مشاعرهم.. لنبني عالمهم</div>
+  </header>
+
+  <main id="main">
+    <!-- ── الطفل ─────────────────────────────────────────────── -->
+    <section id="tab-child" class="tab active" aria-label="الطفل">
+      <div class="card">
+        <h2>👶 ملف الطفل</h2>
+        <div id="childForm">
+          <label>اسم الطفل<input id="childName" maxlength="40" placeholder="مثال: لينا"></label>
+          <label>العمر<input id="childAge" type="number" min="1" max="84" placeholder="بالأشهر (مثال: 36)"></label>
+          <button id="saveChild" class="btn primary">حفظ</button>
+          <p class="hint">السنوات تُكتب بالأشهر: 3 سنوات ≈ 36</p>
+        </div>
+        <div id="childCard" class="hidden">
+          <div class="big" id="childShown"></div>
+          <div class="row-actions">
+            <button id="editChild" class="btn ghost">تعديل</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>📊 عن هذه النسخة</h2>
+        <p>تطبيق <b>MIRA Mind</b> يعمل أرضياً بالكامل: بدون حسابات، بدون سحابة، وبدون أرقام شخصية.</p>
+        <p class="hint">يعمل أيضاً على الكمبيوتر: أي متصفح حديث، أو ثبّته كتطبيق من قائمة التثبيت.</p>
+      </div>
+    </section>
+
+    <!-- ── اليوم ─────────────────────────────────────────────── -->
+    <section id="tab-day" class="tab" aria-label="اليوم">
+      <div class="card">
+        <h2>📝 تسجيل اليوم</h2>
+        <p class="q">كيف كان المزاج اليوم؟</p>
+        <div class="moodgrid" id="moodGrid"></div>
+        <p class="q">⚡ الطاقة من 1 إلى 5</p>
+        <div class="energy" id="energyRow"></div>
+        <label>🎨 أنشطة وألعاب اليوم (اختياري)
+          <input id="dayActs" placeholder="مكعبات، تلوين، نزهة…"></label>
+        <button id="saveDay" class="btn primary">سجّل اليوم ✓</button>
+      </div>
+      <div class="card">
+        <h2>🗂️ سجل آخر 5 أيام</h2>
+        <div id="recentList" class="list"></div>
+      </div>
+    </section>
+
+    <!-- ── الرسم ─────────────────────────────────────────────── -->
+    <section id="tab-drawing" class="tab" aria-label="الرسم">
+      <div class="card">
+        <h2>🎨 صورة رسمة طفلك</h2>
+        <p class="hint">اختر صورة أو صوّرها بعدسة الجهاز — تُحلَّل <b>داخل هاتفك</b> ولا تُرفع لأي مكان.</p>
+        <label class="upload">
+          <input id="photoInput" type="file" accept="image/*" capture="environment">
+          <span>📷 اختر / صوّر رسمة</span>
+        </label>
+        <img id="previewImg" class="hidden" alt="معاينة الرسمة">
+        <div id="metricsOut" class="hidden"></div>
+      </div>
+      <div class="card">
+        <h2>🖼️ رسومات محفوظة (محلياً)</h2>
+        <div id="drawingList" class="list"></div>
+      </div>
+    </section>
+
+    <!-- ── التقرير ───────────────────────────────────────────── -->
+    <section id="tab-report" class="tab" aria-label="التقرير">
+      <div class="card" id="reportCard">
+        <h2>📊 التقرير الأسبوعي</h2>
+        <div id="reportBody"><p class="hint">اضغط للبناء بعد توفر سجلات.</p></div>
+        <button id="buildReport" class="btn primary">ابنِ التقرير 📊</button>
+        <button id="shareReport" class="btn ghost">مشاركة / نسخ 📋</button>
+      </div>
+    </section>
+
+    <!-- ── الخصوصية ──────────────────────────────────────────── -->
+    <section id="tab-privacy" class="tab" aria-label="الخصوصية">
+      <div class="card">
+        <h2>🔒 الخصوصية أولاً</h2>
+        <ul class="privacy-list">
+          <li>كل السجلات والرسومات محفوظة <b>داخل هذا الجهاز</b> فقط (IndexedDB محلي).</li>
+          <li>لا تحليل لتعابير الوجه ولا بيانات بيومترية إطلاقاً.</li>
+          <li>التطبيق لا يحتوي أي خادم أو حسابات — لا نعرف عنك شيئاً.</li>
+          <li>قراءات الرسومات <b>استرشادية احتمالية</b> وليست تشخيصاً — النمط عبر الأيام هو ما يُقرأ.</li>
+        </ul>
+        <div class="row-actions">
+          <button id="exportBtn" class="btn ghost">تصدير نسخة احتياطية ⇩</button>
+          <button id="importBtn" class="btn ghost">استيراد نسخة ⇧</button>
+          <input id="importFile" type="file" accept="application/json" class="hidden">
+        </div>
+        <button id="wipeBtn" class="btn danger">🗑️ مسح كل بياناتي نهائياً</button>
+      </div>
+
+      <div class="card">
+        <h2>🧡 الصانع والدعم</h2>
+        <p><b>Baran Avisat</b> — baranavisat@gmail.com · +90 531 326 37 22 · <a href="https://wa.me/905313263722">واتساب</a></p>
+        <p class="mini">BTC: <code>bc1q8dhtdrndxsl70e97t8grydfe6pjue37zrhzf6c</code><br>
+        USDT-TRC20: <code>TLWdTjqqogkXNEXGiPWsGdjFP6ioycxeWW</code></p>
+        <p class="hint botline">للحصول على متابعة عبر تليجرام: <a id="botLink" href="https://t.me/MIRA_Mind_Helper_bot">@MIRA_Mind_Helper_bot</a></p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="tabbar">
+    <button data-tab="child">👶<small>الطفل</small></button>
+    <button data-tab="day">📝<small>اليوم</small></button>
+    <button data-tab="drawing">🎨<small>الرسم</small></button>
+    <button data-tab="report">📊<small>التقرير</small></button>
+    <button data-tab="privacy">🔒<small>الخصوصية</small></button>
+  </nav>
+
+  <div id="toast" class="hidden"></div>
+  <script src="app.js"></script>
+</body>
+</html>

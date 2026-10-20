@@ -28,7 +28,7 @@ STATE_PATH = os.path.join(config.DATA_DIR, "bot_state.json")
 MOOD_CHOICES = "1 سعيد · 2 هادئ · 3 فضولي · 4 متحمس · 5 متعب · 6 حزين قليلاً · 7 غاضب قليلاً · 8 مشتت"
 
 
-def _open(url: str, data: bytes = None, timeout: int = 25) -> bytes:
+def _open(url: str, data: bytes = None, timeout: int = 45) -> bytes:
     """HTTP with verified TLS first, then unverified fallback (local VPN/proxy)."""
     req = urllib.request.Request(url, data=data,
                                  headers={"Content-Type": "application/json"})
